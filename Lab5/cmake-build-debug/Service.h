@@ -12,7 +12,7 @@ public:
     bool inUnitCircle(Entity entity);
     int allEntitiesUnitCircle(Repo* repo);
     void determinateTheBiggestEntity(int &position);
-    void determinateTheLongestSubsequence();
+    void determinateTheLongestSubsequence(Repo* repo, short &startPosition, short &endPosition);
 };
 
 

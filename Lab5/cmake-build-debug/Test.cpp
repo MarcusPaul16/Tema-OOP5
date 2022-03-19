@@ -57,9 +57,32 @@ void Test::testInUnitCircle() {
     repo.addEntity(entitate3);
     assert(service.allEntitiesUnitCircle(&repo) == 1);
 }
-
+void testMaxSebsequence(){
+    Repo repo;
+    Service service(&repo);
+    short startPosition, endPosition;
+    Entity number1(2, 3);
+    Entity number2(2, 3);
+    Entity number3(5, 4);
+    repo.addEntity(number1);
+    repo.addEntity(number2);
+    repo.addEntity(number3);
+    service.determinateTheLongestSubsequence(&repo, startPosition, endPosition);
+    assert(startPosition == 0 and endPosition == 1);
+    Entity number4(10, 10);
+    Entity number5(10, 10);
+    Entity number6(10, 10);
+    Entity number7(10, 10);
+    repo.addEntity(number4);
+    repo.addEntity(number5);
+    repo.addEntity(number6);
+    repo.addEntity(number7);
+    service.determinateTheLongestSubsequence(&repo, startPosition, endPosition);
+    assert(startPosition == 3 and endPosition == 6);
+}
 void Test::testAll(){
     testAdaugare();
     testMaxEntity();
     testInUnitCircle();
+    testMaxSebsequence();
 }

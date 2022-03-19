@@ -1,8 +1,6 @@
 #include "Service.h"
 #include <cmath>
 #include "Repo.h"
-#include <iostream>
-#define PI 3.14159
 using namespace std;
 Service::Service(Repo* repo) {
     this->repo = repo;
@@ -38,4 +36,33 @@ int Service::allEntitiesUnitCircle(Repo *repo) {
             count++;
     }
     return count;
+}
+void Service::determinateTheLongestSubsequence(Repo *repo, short &startPosition, short &endPosition) {
+    Entity *p = this->repo->getAll();
+    short counter = 1, maxim = -1, startMaxim = 0;
+    startPosition = endPosition = 0;
+    for (short i = 0; i < this->repo->getSize() - 1; i++){
+        if (p[i] == p[i+1])
+            counter++;
+        else{
+            if (counter > maxim){
+                maxim = counter;
+                startMaxim = startPosition;
+                counter = 1;
+            }
+            startPosition = i + 1;
+        }
+    }
+    if (counter > maxim){
+        maxim = counter;
+        startMaxim = startPosition;
+    }
+    if (maxim == 1){
+        startPosition = 0;
+        endPosition = 0;
+    }
+    else{
+        startPosition = startMaxim;
+        endPosition = startMaxim + maxim - 1;
+    }
 }
