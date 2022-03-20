@@ -9,7 +9,7 @@ Console::Console(Service* service) {
 }
 void Console::showSubsequence(short startPosition, short endPosition) {
     Entity* p = this->service->getAll();
-    for (int i = startPosition; i < endPosition; i++){
+    for (int i = startPosition; i <= endPosition; i++){
         cout << "Entity" << i << ": ";
         cout << "Parte reala: " << p[i].getParteReala() << ' ';
         cout << "Parte imaginara: " << p[i].getParteImaginara() << '\n';
@@ -42,12 +42,33 @@ void Console::ConsoleOn() {
             if (this->service->getSize() == 0)
                 cout << "Nu exista nicio entitate" << '\n';
             else
-                this->showSubsequence(0, this->service->getSize());
+                this->showSubsequence(0, this->service->getSize() - 1);
         }
         else if (optiune == 3){
-            short startPosition, endPosition;
-            this->service->determinateTheLongestSubsequence(startPosition, endPosition);
-            this->showSubsequence(startPosition, endPosition);
+            int position;
+            this->service->determinateTheBiggestEntity(position);
+            Entity *p = this->service->getAll();
+            cout << "Cea mai mare entitate este: ";
+            cout << "Parte reala: " << p[position].getParteReala() << " ";
+            cout << "Parte imaginara: " << p[position].getParteImaginara() << '\n';
+        }
+        else if (optiune == 4){
+            int count, *p;
+            p = this->service->allEntitiesUnitCircle(count);
+            for (int i = 0; i < count; i++){
+                cout << "Entity" << i << ": ";
+                cout << "Parte reala: " << this->service->getAll()[*(p+i)].getParteReala() << " ";
+                cout << "Parte imaginara: " << this->service->getAll()[*(p+i)].getParteImaginara() << "\n";
+            }
+        }
+        else if (optiune == 5){
+            if (this->service->getSize() == 0)
+                cout << "Nu exista nicio entitate" << '\n';
+            else{
+                short startPosition, endPosition;
+                this->service->determinateTheLongestSubsequence(startPosition,endPosition);
+                this->showSubsequence(startPosition, endPosition);
+            }
         }
         else if (optiune == 6)
             running = false;

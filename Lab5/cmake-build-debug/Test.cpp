@@ -50,12 +50,16 @@ void Test::testInUnitCircle() {
     Entity entitate1(1, 2);
     Entity entitate2(6, 2);
     Entity entitate3(1, 10);
+    int count;
     repo.addEntity(entitate1);
-    assert(service.allEntitiesUnitCircle() == 0);
+    service.allEntitiesUnitCircle(count);
+    assert(count == 1);
     repo.addEntity(entitate2);
-    assert(service.allEntitiesUnitCircle() == 1);
+    service.allEntitiesUnitCircle(count);
+    assert(count == 2);
     repo.addEntity(entitate3);
-    assert(service.allEntitiesUnitCircle() == 1);
+    service.allEntitiesUnitCircle(count);
+    assert(count == 3);
 }
 void testMaxSebsequence(){
     Repo repo;

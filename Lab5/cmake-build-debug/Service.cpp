@@ -1,6 +1,7 @@
 #include "Service.h"
 #include <cmath>
 #include "Repo.h"
+#define PI 3.14
 using namespace std;
 Service::Service(Repo* repo) {
     this->repo = repo;
@@ -21,11 +22,11 @@ double Service::module(Entity entity){
 }
 bool Service::inUnitCircle(Entity entity){
     double tangent = atan(entity.getParteImaginara() / entity.getParteReala());
-    if (tangent <= 0.5)
+    if (tangent <= PI/2)
         return true;
     return false;
 }
-void Service::determinateTheBiggestEntity(int &position) {
+void Service::determinateTheBiggestEntity(int& position) {
     double maxim = -1;
     Entity *p = this->repo->getAll();
     for (int i = 0 ; i < this->repo->getSize(); i++){
@@ -37,15 +38,20 @@ void Service::determinateTheBiggestEntity(int &position) {
         }
     }
 }
-int Service::allEntitiesUnitCircle() {
+
+int* Service::allEntitiesUnitCircle(int& count) {
     Entity *p = this->repo->getAll();
-    int count = 0;
+    static int pozitii[100];
+    count = 0;
     for (int i = 0 ; i < this->repo->getSize(); i++){
-        if (inUnitCircle(p[i]))
+        if (inUnitCircle(p[i])){
+            pozitii[count] = i;
             count++;
+        }
     }
-    return count;
+    return pozitii;
 }
+
 void Service::determinateTheLongestSubsequence(short &startPosition, short &endPosition) {
     Entity *p = this->repo->getAll();
     short counter = 1, maxim = -1, startMaxim = 0;

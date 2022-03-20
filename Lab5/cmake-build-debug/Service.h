@@ -12,8 +12,8 @@ public:
     bool inUnitCircle(Entity entity);
     void addEntity(Entity entity);
     Entity* getAll();
-    int allEntitiesUnitCircle();
-    void determinateTheBiggestEntity(int &position);
+    int* allEntitiesUnitCircle(int&);
+    void determinateTheBiggestEntity(int& position);
     void determinateTheLongestSubsequence(short &startPosition, short &endPosition);
     void showSubsequence(short, short);
     short getSize();
