@@ -9,6 +9,7 @@ public:
     Console(Service* service);
     ~Console();
     void ConsoleOn();
+    void showSubsequence(short, short);
 };
 
 

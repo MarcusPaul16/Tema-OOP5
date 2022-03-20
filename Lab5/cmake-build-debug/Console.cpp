@@ -7,6 +7,14 @@ using namespace std;
 Console::Console(Service* service) {
     this->service = service;
 }
+void Console::showSubsequence(short startPosition, short endPosition) {
+    Entity* p = this->service->getAll();
+    for (int i = startPosition; i < endPosition; i++){
+        cout << "Entity" << i << ": ";
+        cout << "Parte reala: " << p[i].getParteReala() << ' ';
+        cout << "Parte imaginara: " << p[i].getParteImaginara() << '\n';
+    }
+}
 Console::~Console() {}
 void Console::ConsoleOn() {
     Test test;
@@ -31,11 +39,15 @@ void Console::ConsoleOn() {
             this->service->addEntity(entity);
         }
         else if (optiune == 2){
-
+            if (this->service->getSize() == 0)
+                cout << "Nu exista nicio entitate" << '\n';
+            else
+                this->showSubsequence(0, this->service->getSize());
         }
         else if (optiune == 3){
             short startPosition, endPosition;
             this->service->determinateTheLongestSubsequence(startPosition, endPosition);
+            this->showSubsequence(startPosition, endPosition);
         }
         else if (optiune == 6)
             running = false;
