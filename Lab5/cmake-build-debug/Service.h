@@ -10,9 +10,13 @@ public:
     ~Service();
     double module(Entity);
     bool inUnitCircle(Entity entity);
-    int allEntitiesUnitCircle(Repo* repo);
+    void addEntity(Entity entity);
+    Entity* getAll();
+    int allEntitiesUnitCircle();
     void determinateTheBiggestEntity(int &position);
-    void determinateTheLongestSubsequence(Repo* repo, short &startPosition, short &endPosition);
+    void determinateTheLongestSubsequence(short &startPosition, short &endPosition);
+    void showSubsequence(short, short);
+    short getSize();
 };
 
 

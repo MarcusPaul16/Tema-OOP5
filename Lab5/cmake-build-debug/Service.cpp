@@ -5,6 +5,15 @@ using namespace std;
 Service::Service(Repo* repo) {
     this->repo = repo;
 }
+void Service::addEntity(Entity entity){
+    this->repo->addEntity(entity);
+}
+Entity* Service::getAll(){
+    return this->repo->getAll();
+}
+short Service::getSize(){
+    return this->repo->getSize();
+}
 Service::~Service() {}
 double Service::module(Entity entity){
     double module = sqrt(entity.getParteImaginara()*entity.getParteImaginara() + entity.getParteReala()*entity.getParteReala());
@@ -28,7 +37,7 @@ void Service::determinateTheBiggestEntity(int &position) {
         }
     }
 }
-int Service::allEntitiesUnitCircle(Repo *repo) {
+int Service::allEntitiesUnitCircle() {
     Entity *p = this->repo->getAll();
     int count = 0;
     for (int i = 0 ; i < this->repo->getSize(); i++){
@@ -37,7 +46,7 @@ int Service::allEntitiesUnitCircle(Repo *repo) {
     }
     return count;
 }
-void Service::determinateTheLongestSubsequence(Repo *repo, short &startPosition, short &endPosition) {
+void Service::determinateTheLongestSubsequence(short &startPosition, short &endPosition) {
     Entity *p = this->repo->getAll();
     short counter = 1, maxim = -1, startMaxim = 0;
     startPosition = endPosition = 0;

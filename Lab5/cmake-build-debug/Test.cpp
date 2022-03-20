@@ -51,11 +51,11 @@ void Test::testInUnitCircle() {
     Entity entitate2(6, 2);
     Entity entitate3(1, 10);
     repo.addEntity(entitate1);
-    assert(service.allEntitiesUnitCircle(&repo) == 0);
+    assert(service.allEntitiesUnitCircle() == 0);
     repo.addEntity(entitate2);
-    assert(service.allEntitiesUnitCircle(&repo) == 1);
+    assert(service.allEntitiesUnitCircle() == 1);
     repo.addEntity(entitate3);
-    assert(service.allEntitiesUnitCircle(&repo) == 1);
+    assert(service.allEntitiesUnitCircle() == 1);
 }
 void testMaxSebsequence(){
     Repo repo;
@@ -67,7 +67,7 @@ void testMaxSebsequence(){
     repo.addEntity(number1);
     repo.addEntity(number2);
     repo.addEntity(number3);
-    service.determinateTheLongestSubsequence(&repo, startPosition, endPosition);
+    service.determinateTheLongestSubsequence(startPosition, endPosition);
     assert(startPosition == 0 and endPosition == 1);
     Entity number4(10, 10);
     Entity number5(10, 10);
@@ -77,7 +77,7 @@ void testMaxSebsequence(){
     repo.addEntity(number5);
     repo.addEntity(number6);
     repo.addEntity(number7);
-    service.determinateTheLongestSubsequence(&repo, startPosition, endPosition);
+    service.determinateTheLongestSubsequence(startPosition, endPosition);
     assert(startPosition == 3 and endPosition == 6);
 }
 void Test::testAll(){
